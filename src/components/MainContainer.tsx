@@ -55,10 +55,13 @@ type MainContainerState = {
 };
 
 export class MainContainer extends React.Component<{}, MainContainerState> {
-  state: MainContainerState = {
-    adviceNum: '',
-    content: '',
-  };
+  constructor(props: {}) {
+    super(props);
+    this.state = {
+      adviceNum: '',
+      content: '',
+    };
+  }
 
   async fetchAdvice() {
     const data = await fetch('https://api.adviceslip.com/advice');
@@ -81,7 +84,7 @@ export class MainContainer extends React.Component<{}, MainContainerState> {
         <h2>"{this.state.content}"</h2>
         <img className="divider" src={divider} alt="divider" />
         <div className="button-area">
-          <button className="dice-btn">
+          <button className="dice-btn" onClick={this.fetchAdvice.bind(this)}>
             <img src={dice} alt="dice" />
           </button>
         </div>
