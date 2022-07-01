@@ -1,25 +1,24 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import styled from 'styled-components';
+
+import { MainContainer } from './components/MainContainer';
+
+export const StyledApp = styled.div`
+  @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@300;500;600;800&display=swap');
+  background-color: hsl(217, 19%, 24%);
+  height: 100vh;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Manrope', sans-serif;
+`;
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <StyledApp>
+      <MainContainer />
+    </StyledApp>
   );
 }
 
