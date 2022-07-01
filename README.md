@@ -9,7 +9,6 @@ This is a solution to the [Advice generator app challenge on Frontend Mentor](ht
   - [Overview](#overview)
     - [The challenge](#the-challenge)
     - [Screenshot](#screenshot)
-    - [Links](#links)
   - [My process](#my-process)
     - [Built with](#built-with)
     - [What I learned](#what-i-learned)
@@ -31,10 +30,6 @@ Users should be able to:
 
 ![](./desktop.png)
 ![](./mobile.png)
-
-### Links
-
-- Live Site URL: [Github Pages](https://othankq.github.io/advice-generator/)
 
 ## My process
 
