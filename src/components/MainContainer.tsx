@@ -95,11 +95,9 @@ export class MainContainer extends React.Component<{}, MainContainerState> {
   }
 
   reRenderDivider = () => {
-    console.log('this ran');
     this.setState({
       dividerImg: window.innerWidth > 375 ? dividerDesktop : dividerMobile,
     });
-    console.log(this.state.dividerImg);
   };
 
   componentDidMount() {
