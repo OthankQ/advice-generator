@@ -2,11 +2,13 @@ import React from 'react';
 import styled from 'styled-components';
 
 import { Header } from './Header';
-import divider from '../imgs/pattern-divider-desktop.svg';
+import dividerDesktop from '../imgs/pattern-divider-desktop.svg';
+import dividerMobile from '../imgs/pattern-divider-mobile.svg';
 import dice from '../imgs/icon-dice.svg';
 
 export const StyledContainer = styled.div`
-  width: 500px;
+  max-width: 500px;
+  min-width: 200px;
   height: auto;
   border-radius: 20px;
   background-color: #435063;
@@ -48,11 +50,7 @@ export const StyledContainer = styled.div`
     align-items: center;
 
     :hover {
-      background-color: hsl(
-        150.2127659574468,
-        58.995815899581594%,
-        53.13725490196079%
-      );
+      background-color: hsl(150, 58%, 53%);
       cursor: pointer;
       transition: 0.2s;
     }
@@ -61,11 +59,19 @@ export const StyledContainer = styled.div`
       transform: translateY(4px);
     }
   }
+
+  @media (max-width: 375px) {
+    margin: 0 10px;
+    .divider {
+      width: 98%;
+    }
+  }
 `;
 
 type MainContainerState = {
-  adviceNum: String;
-  content: String;
+  adviceNum: string;
+  content: string;
+  dividerImg: string;
 };
 
 export class MainContainer extends React.Component<{}, MainContainerState> {
@@ -74,6 +80,7 @@ export class MainContainer extends React.Component<{}, MainContainerState> {
     this.state = {
       adviceNum: '',
       content: '',
+      dividerImg: dividerDesktop,
     };
   }
 
@@ -87,8 +94,18 @@ export class MainContainer extends React.Component<{}, MainContainerState> {
     });
   }
 
+  reRenderDivider = () => {
+    console.log('this ran');
+    this.setState({
+      dividerImg: window.innerWidth > 375 ? dividerDesktop : dividerMobile,
+    });
+    console.log(this.state.dividerImg);
+  };
+
   componentDidMount() {
     this.fetchAdvice();
+    this.reRenderDivider();
+    window.addEventListener('resize', this.reRenderDivider);
   }
 
   render() {
@@ -96,7 +113,7 @@ export class MainContainer extends React.Component<{}, MainContainerState> {
       <StyledContainer>
         <Header adviceNum={this.state.adviceNum} />
         <h2>"{this.state.content}"</h2>
-        <img className="divider" src={divider} alt="divider" />
+        <img className="divider" src={this.state.dividerImg} alt="divider" />
         <div className="button-area">
           <button className="dice-btn" onClick={this.fetchAdvice.bind(this)}>
             <img src={dice} alt="dice" />
