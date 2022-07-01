@@ -9,7 +9,7 @@ export const StyledHeader = styled.div`
 `;
 
 type HeaderProps = {
-  adviceNum: string;
+  adviceNum: String;
 };
 
 export class Header extends React.Component<HeaderProps, {}> {

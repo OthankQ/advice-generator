@@ -55,14 +55,30 @@ type MainContainerState = {
 };
 
 export class MainContainer extends React.Component<{}, MainContainerState> {
+  state: MainContainerState = {
+    adviceNum: '',
+    content: '',
+  };
+
+  async fetchAdvice() {
+    const data = await fetch('https://api.adviceslip.com/advice');
+    data.json().then((res) => {
+      this.setState({
+        adviceNum: String(res.slip.id),
+        content: res.slip.advice,
+      });
+    });
+  }
+
+  componentDidMount() {
+    this.fetchAdvice();
+  }
+
   render() {
     return (
       <StyledContainer>
-        <Header adviceNum="117" />
-        <h2>
-          "It is easy to sit up and take notice, what's difficult is getting up
-          and taking action."
-        </h2>
+        <Header adviceNum={this.state.adviceNum} />
+        <h2>"{this.state.content}"</h2>
         <img className="divider" src={divider} alt="divider" />
         <div className="button-area">
           <button className="dice-btn">
