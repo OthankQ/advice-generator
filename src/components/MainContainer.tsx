@@ -46,6 +46,20 @@ export const StyledContainer = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
+
+    :hover {
+      background-color: hsl(
+        150.2127659574468,
+        58.995815899581594%,
+        53.13725490196079%
+      );
+      cursor: pointer;
+      transition: 0.2s;
+    }
+
+    :active {
+      transform: translateY(4px);
+    }
   }
 `;
 
