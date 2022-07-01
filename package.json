@@ -1,7 +1,7 @@
 {
   "name": "advice-generator",
   "version": "0.1.0",
-  "homepage": "https://github.com/OthankQ/advice-generator",
+  "homepage": "https://OthankQ.github.io/advice-generator",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.4",
